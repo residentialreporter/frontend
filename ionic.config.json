@@ -1,0 +1,8 @@
+{
+  "name": "residentialreporter",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

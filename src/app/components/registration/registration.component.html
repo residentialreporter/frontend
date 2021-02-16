@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+            <h2>{{'Registration' | translate}}</h2>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="address"
+                       matInput
+                       placeholder="{{'Email address' | translate}}"
+                       required>
+                <mat-error>
+                    {{'Please provide a valid email address' | translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input formControlName="username"
+                       matInput
+                       placeholder="{{'Username' | translate}}"
+                       required>
+                <mat-error>
+                    {{'Please provide a valid username' | translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input formControlName="password"
+                       matInput
+                       placeholder="{{'Password' | translate}}"
+                       required
+                       type="password">
+                <mat-error>
+                    {{'Please provide a valid password' | translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input formControlName="passwordConfirm"
+                       matInput
+                       placeholder="{{'Password confirm' | translate}}"
+                       required
+                       type="password">
+                <mat-error>
+                    {{'Please confirm your password' | translate}}
+                </mat-error>
+            </mat-form-field>
+            <button color="primary" mat-raised-button>{{'Register!' | translate}}</button>
+            {{ '* required' | translate}}
+        </form>
+    </mat-card-content>
+</mat-card>
+

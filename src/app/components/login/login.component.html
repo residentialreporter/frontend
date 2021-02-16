@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
+            <h2>{{ 'Log in' | translate }}</h2>
+            <div *ngIf="loginInvalid">
+                {{ 'The username and password were not recognised' | translate }}
+            </div>
+            <mat-form-field class="full-width-input">
+                <input formControlName="username"
+                       matInput
+                       placeholder="{{ 'Username' | translate }}"
+                       autocomplete="current-username"
+                       required>
+                <mat-error>
+                    {{ 'Please provide a valid username' | translate }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input formControlName="password"
+                       matInput
+                       placeholder="{{ 'Password' | translate }}"
+                       autocomplete="current-password"
+                       required
+                       type="password">
+                <mat-error>
+                    {{ 'Please provide a valid password' | translate }}
+                </mat-error>
+            </mat-form-field>
+
+            <button color="primary" mat-raised-button>{{ 'Log in' | translate }}</button>
+
+            <hr>
+
+            <button color="secondary" routerLink="/password-reset" mat-raised-button>{{'Reset password' | translate}}</button>
+        </form>
+    </mat-card-content>
+</mat-card>

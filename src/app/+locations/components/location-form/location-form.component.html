@@ -1,0 +1,85 @@
+<mat-card>
+    <mat-card-content>
+        <app-leaflet-map-select-place placeType="label"
+                                      (itemSelected)="selectPlace($event)">
+        </app-leaflet-map-select-place>
+
+        <form [formGroup]="formGroup">
+            <mat-form-field class="location-input">
+                <input formControlName="name"
+                       matInput
+                       placeholder="{{'Location name' | translate}}"
+                       type="text">
+            </mat-form-field>
+            <mat-error *ngIf="formGroup.get('name').hasError('required')">
+                {{ 'Name is required' | translate}}
+            </mat-error>
+
+            <mat-form-field class="location-input">
+                <mat-select placeholder="{{'Type of report' | translate}}"
+                            formControlName="type">
+                    <mat-option *ngFor="let type of types"
+                                [value]="type"
+                                (onSelectionChange)="updateType($event)">
+                        {{type | translate}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error *ngIf="formGroup.get('type').hasError('required')">
+                {{ 'Type is required' | translate}}
+            </mat-error>
+
+            <mat-form-field class="location-input">
+                <input matInput [matDatepicker]="picker"
+                       formControlName="since"
+                       placeholder="{{ 'Since when' | translate}}">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="location-input">
+                <input formControlName="description"
+                       matInput
+                       placeholder="{{ 'Location description' | translate}}"
+                       type="text">
+            </mat-form-field>
+
+            <div class="form-group" *ngIf="user$.isModerator()">
+                <mat-form-field class="location-input">
+                    <input formControlName="slug"
+                           matInput
+                           placeholder="{{ 'Location slug' | translate}}"
+                           type="text">
+                </mat-form-field>
+                <mat-error *ngIf="formGroup.get('slug').hasError('required')">
+                    {{ 'Slug is required' | translate}}
+                </mat-error>
+
+                <mat-form-field class="region-input">
+                    <input formControlName="description"
+                           matInput
+                           placeholder="{{ 'Location description' | translate}}"
+                           type="text">
+                </mat-form-field>
+                <mat-checkbox formControlName="active">{{ 'Active' | translate}}</mat-checkbox>
+            </div>
+        </form>
+
+    </mat-card-content>
+</mat-card>
+<!--
+<mat-card>
+    <h1>Object Editor</h1>
+    <mat-card-content>
+        <json-schema-form [(data)]="location" [schema]="schema" [layout]="form" framework="material-design"></json-schema-form>
+
+        <br>
+        {{schema | json}}
+        <br>
+        {{location | json}}
+        <br>
+        {{form | json}}
+    </mat-card-content>
+</mat-card>
+
+-->

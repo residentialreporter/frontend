@@ -1,0 +1,9 @@
+<div class="regions" fxLayout="column" fxLayoutAlign="start stretch">
+    <h2>{{ 'Regions' | translate}}</h2>
+    <div *ngIf="user$.isAdmin()" class="actions" fxLayout="row" fxLayoutAlign="end">
+        <a color="primary" mat-stroked-button routerLink="add">{{ 'Add Region' | translate}}</a>
+    </div>
+    <app-regions-table (delete)="onDelete($event)"
+                         (edit)="onEdit($event)"
+                         [regions]="regions$ | async"></app-regions-table>
+</div>

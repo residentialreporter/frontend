@@ -1,0 +1,21 @@
+<div class="app-leaflet-map-select-place"
+     leaflet
+     (leafletClick)="onClick($event)"
+     [(leafletCenter)]="center"
+     [leafletOptions]="options"
+     [leafletLayersControl]="layersControl"
+     [leafletLayers]="layers">
+</div>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <mat-form-field class="full-width-input">
+        <input formControlName="address"
+               matInput
+               placeholder="{{'Address' | translate}}">
+    </mat-form-field>
+    <mat-select [hidden]="multiple === false">
+        <mat-option *ngFor="let place of places" [value]="place.value" (onSelectionChange)="selectPlace($event)">
+            {{place.viewValue}}
+        </mat-option>
+    </mat-select>
+</form>

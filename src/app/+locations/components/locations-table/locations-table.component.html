@@ -1,0 +1,48 @@
+<mat-form-field class="filter-input">
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
+</mat-form-field>
+
+<h2>{{ 'Map' | translate}}</h2>
+
+<app-leaflet-map-locations></app-leaflet-map-locations>
+
+<h2>{{ 'List' | translate}}</h2>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>{{ 'Name' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let location">
+                <a [routerLink]="[location.id]" class="dark-link">{{location.name}}</a>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="isActive">
+            <mat-header-cell *matHeaderCellDef>{{ 'Is Active' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let location">
+                <mat-chip-list>
+                    <mat-chip *ngIf="location.isActive" class="green-chip">{{ 'Yes' | translate}}
+                    </mat-chip>
+                    <mat-chip *ngIf="!location.isActive" class="red-chip">{{ 'No' | translate}}</mat-chip>
+                </mat-chip-list>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let location">
+                <button [matMenuTriggerFor]="menu" mat-icon-button>
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="edit.emit(location)" mat-menu-item>{{ 'Edit' | translate}}</button>
+                    <button (click)="delete.emit(location)" mat-menu-item>{{ 'Delete' | translate}}
+                    </button>
+                </mat-menu>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let location; columns: columnsToDisplay"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                   [pageSize]="10"
+                   showFirstLastButtons></mat-paginator>
+</div>

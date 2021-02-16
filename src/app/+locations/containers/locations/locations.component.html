@@ -1,0 +1,9 @@
+<div class="locations" fxLayout="column" fxLayoutAlign="start stretch">
+    <h2>{{ 'Locations' | translate}}</h2>
+    <div *ngIf="user$.isUser()" class="actions" fxLayout="row" fxLayoutAlign="end">
+        <a color="primary" mat-stroked-button routerLink="add">{{ 'Add Location' | translate}}</a>
+    </div>
+    <app-locations-table (delete)="onDelete($event)"
+                         (edit)="onEdit($event)"
+                         [locations]="locations$ | async"></app-locations-table>
+</div>

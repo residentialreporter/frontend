@@ -1,0 +1,54 @@
+<mat-form-field class="filter-input">
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
+</mat-form-field>
+
+<h2>{{ 'Map' | translate}}</h2>
+
+<app-leaflet-map-locations [places]="this.regions"></app-leaflet-map-locations>
+
+<h2>{{ 'List' | translate}}</h2>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> {{ 'Name' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let region">
+                <a [routerLink]="[region.uuid]" class="dark-link">{{region.name}}</a>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="active">
+            <mat-header-cell *matHeaderCellDef> {{ 'Is Active' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let region">
+                <mat-chip-list>
+                    <mat-chip *ngIf="region.active" class="green-chip">{{ 'Yes' | translate }}
+                    </mat-chip>
+                    <mat-chip *ngIf="!region.active" class="red-chip">{{ 'No' | translate }}</mat-chip>
+                </mat-chip-list>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="slug">
+            <mat-header-cell *matHeaderCellDef> {{ 'Slug' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let region">
+                <mat-label>{{region.slug}}</mat-label>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let region">
+                <button [matMenuTriggerFor]="menu" mat-icon-button>
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="edit.emit(region)" mat-menu-item>{{ 'Edit' | translate }}</button>
+                    <button (click)="delete.emit(region)" mat-menu-item>{{ 'Delete' | translate }}
+                    </button>
+                </mat-menu>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let region; columns: columnsToDisplay"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                   [pageSize]="10"
+                   showFirstLastButtons></mat-paginator>
+</div>

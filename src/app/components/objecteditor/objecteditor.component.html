@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-title>Edit object</mat-card-title>
+    <mat-card-content>
+        <json-schema-form
+                (onSubmit)="store($event)"
+                [schema]="editor_schema"
+                framework="material-design">
+
+        </json-schema-form>
+    </mat-card-content>
+</mat-card>

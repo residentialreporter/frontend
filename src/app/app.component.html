@@ -1,0 +1,104 @@
+<ion-app>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span fxShow.gt-sm="true" fxShow.lt-md="false">
+                <button mat-button routerLink="/">
+                    <!--<mat-icon>home</mat-icon> -->
+                    <mat-icon>
+                        <img src="assets/icon/building_optimized.svg">
+                    </mat-icon>
+                    {{title}}</button>
+
+                <button mat-button routerLink="/locations/map">{{ 'Map' | translate }}</button>
+                <button mat-button routerLink="/regions">{{ 'Regions' | translate }}</button>
+                <button mat-button routerLink="/locations">{{ 'Reports' | translate }}</button>
+                <!-- <button mat-button routerLink="/editor">Editor</button> -->
+
+                <!-- This fills the remaining space of the current row -->
+                <span class="fill-remaining-space"></span>
+
+
+                <button [matMenuTriggerFor]="usermenubar" [disabled]="isOffline" mat-button>
+                    <mat-icon [hidden]="!isAuthenticated || isOffline">person</mat-icon>
+                    <mat-icon [hidden]="isAuthenticated || isOffline">person_outline</mat-icon>
+                    <mat-icon [hidden]="!isOffline" matTooltip="Cannot contact server!">person_off</mat-icon>
+                </button>
+                <mat-menu #usermenubar="matMenu">
+                    <button [hidden]="isAuthenticated" mat-button routerLink="/register">
+                        <mat-icon>person_add</mat-icon>
+                        {{ 'Register' | translate }}
+                    </button>
+                    <button [hidden]="isAuthenticated" mat-button routerLink="/login">
+                        <mat-icon>person</mat-icon>
+                        {{ 'Log in' | translate }}
+                    </button>
+                    <button (click)="logout()" [hidden]="!isAuthenticated" mat-button>
+                        <mat-icon>person_outline</mat-icon>
+                        {{ 'Log out' | translate }}
+                    </button>
+                    <button [hidden]="!isAuthenticated" mat-button routerLink="/profile">
+                        <mat-icon>account_box</mat-icon>
+                        {{ 'Edit profile' | translate }}
+                    </button>
+                </mat-menu>
+            </span>
+
+            <button [mat-menu-trigger-for]="menu"
+                    fxHide="false"
+                    fxHide.gt-sm
+                    mat-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar-row>
+
+
+    </mat-toolbar>
+    <mat-menu #menu="" x-position="before">
+        <button mat-menu-item routerLink="/">
+            <mat-icon>home</mat-icon>
+            {{title}}</button>
+        <button mat-menu-item routerLink="/map">
+            <mat-icon>map</mat-icon>
+            {{ 'Map' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/regions">
+            <mat-icon>terrain</mat-icon>
+            {{ 'Regions' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/locations">
+            <mat-icon>feedback</mat-icon>
+            {{ 'Reports' | translate }}
+        </button>
+        <!--<button mat-menu-item>Help</button>-->
+        <button [matMenuTriggerFor]="usermenu" [hidden]="isOffline" mat-menu-item>
+            <mat-icon [hidden]="isAuthenticated">person_outline</mat-icon>
+            <mat-icon [hidden]="!isAuthenticated">person</mat-icon>
+            {{ 'User actions' | translate }}
+        </button>
+        <button [hidden]="!isOffline" mat-menu-item [disabled]="true">
+            <mat-icon>person_off</mat-icon>
+            {{ 'No connection!' | translate }}
+        </button>
+        <mat-menu [hidden]="isOffline" #usermenu="matMenu">
+            <button [hidden]="isAuthenticated" mat-button routerLink="/register">
+                <mat-icon>person_add</mat-icon>
+                {{ 'Register' | translate }}
+            </button>
+            <button [hidden]="isAuthenticated" mat-button routerLink="/login">
+                <mat-icon>person</mat-icon>
+                {{ 'Log in' | translate }}
+            </button>
+            <button (click)="logout()" [hidden]="!isAuthenticated" mat-button>
+                <mat-icon>person_outline</mat-icon>
+                {{ 'Log out' | translate }}
+            </button>
+            <button [hidden]="!isAuthenticated" mat-button routerLink="/profile">
+                <mat-icon>account_box</mat-icon>
+                {{ 'Edit profile' | translate }}
+            </button>
+        </mat-menu>
+    </mat-menu>
+
+
+    <ion-router-outlet></ion-router-outlet>
+</ion-app>

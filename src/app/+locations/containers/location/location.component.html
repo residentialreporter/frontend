@@ -1,0 +1,19 @@
+<div class="locations" fxLayout="row" fxLayoutAlign="center stretch">
+    <div fxFlex.lg="65%"
+         fxFlex.md="70%"
+         fxFlex.sm="80%"
+         fxFlex.xl="60%"
+         fxFlex.xs="90%">
+        <h2>{{ 'Location' | translate }}</h2>
+        <app-location-form (locationChange)="onLocationChange($event)"
+                           [location]="location | async"></app-location-form>
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+            <button color="secondary" mat-button routerLink="/locations">{{ 'Cancel' | translate }}</button>
+            <button (click)="onSave()"
+                    [disabled]="!valid"
+                    color="primary"
+                    mat-raised-button>{{ 'Save' | translate}}
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="app-leaflet-map-locations"
+     [style.height]="fullscreen ? '100vh' : '25vh'"
+     leaflet
+     (leafletClick)="onClick($event)"
+     [(leafletCenter)]="center"
+     [leafletOptions]="options"
+     [leafletLayersControl]="layersControl"
+     [leafletLayers]="layers"
+     [leafletMarkerCluster]="markerClusterData"
+     [leafletMarkerClusterOptions]="markerClusterOptions">
+</div>
