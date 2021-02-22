@@ -37,10 +37,27 @@
   vertical-align: middle;
 }
 
-#baustelle .modal-card {
+.modal-card {
   max-width: 42vw;
   margin-left: 29vw;
   padding: 20px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 3px;
+  height: 80vh;
+}
+
+.modal-card img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+footer {
+  text-align: center;
+  vertical-align: text-bottom;
+}
+
+footer img {
+  max-width: 250px;
+  max-height: 180px;
 }
