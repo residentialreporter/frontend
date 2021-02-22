@@ -36,7 +36,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<mat-card>\n    <mat-card-content>\n        <app-leaflet-map-select-place placeType=\"label\"\n                                      (itemSelected)=\"selectPlace($event)\">\n        </app-leaflet-map-select-place>\n\n        <form [formGroup]=\"formGroup\">\n            <mat-form-field class=\"location-input\">\n                <input formControlName=\"name\"\n                       matInput\n                       placeholder=\"{{'Location name' | translate}}\"\n                       type=\"text\">\n            </mat-form-field>\n            <mat-error *ngIf=\"formGroup.get('name').hasError('required')\">\n                {{ 'Name is required' | translate}}\n            </mat-error>\n\n            <mat-form-field class=\"location-input\">\n                <mat-select placeholder=\"{{'Type of report' | translate}}\"\n                            formControlName=\"type\">\n                    <mat-option *ngFor=\"let type of types\"\n                                [value]=\"type\"\n                                (onSelectionChange)=\"updateType($event)\">\n                        {{type | translate}}\n                    </mat-option>\n                </mat-select>\n            </mat-form-field>\n            <mat-error *ngIf=\"formGroup.get('type').hasError('required')\">\n                {{ 'Type is required' | translate}}\n            </mat-error>\n\n            <mat-form-field class=\"location-input\">\n                <input matInput [matDatepicker]=\"picker\"\n                       formControlName=\"since\"\n                       placeholder=\"{{ 'Since when' | translate}}\">\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                <mat-datepicker #picker></mat-datepicker>\n            </mat-form-field>\n\n            <mat-form-field class=\"location-input\">\n                <input formControlName=\"description\"\n                       matInput\n                       placeholder=\"{{ 'Location description' | translate}}\"\n                       type=\"text\">\n            </mat-form-field>\n\n            <div class=\"form-group\" *ngIf=\"user$.isModerator()\">\n                <mat-form-field class=\"location-input\">\n                    <input formControlName=\"slug\"\n                           matInput\n                           placeholder=\"{{ 'Location slug' | translate}}\"\n                           type=\"text\">\n                </mat-form-field>\n                <mat-error *ngIf=\"formGroup.get('slug').hasError('required')\">\n                    {{ 'Slug is required' | translate}}\n                </mat-error>\n\n                <mat-form-field class=\"region-input\">\n                    <input formControlName=\"description\"\n                           matInput\n                           placeholder=\"{{ 'Location description' | translate}}\"\n                           type=\"text\">\n                </mat-form-field>\n                <mat-checkbox formControlName=\"active\">{{ 'Active' | translate}}</mat-checkbox>\n            </div>\n        </form>\n\n    </mat-card-content>\n</mat-card>\n<!--\n<mat-card>\n    <h1>Object Editor</h1>\n    <mat-card-content>\n        <json-schema-form [(data)]=\"location\" [schema]=\"schema\" [layout]=\"form\" framework=\"material-design\"></json-schema-form>\n\n        <br>\n        {{schema | json}}\n        <br>\n        {{location | json}}\n        <br>\n        {{form | json}}\n    </mat-card-content>\n</mat-card>\n\n-->\n";
+      __webpack_exports__["default"] = "<mat-card>\n    <mat-card-content>\n        <app-leaflet-map-select-place placeType=\"label\"\n                                      (itemSelected)=\"selectPlace($event)\">\n        </app-leaflet-map-select-place>\n\n        <form [formGroup]=\"formGroup\">\n            <mat-form-field class=\"location-input\">\n                <input formControlName=\"name\"\n                       matInput\n                       placeholder=\"{{'Location name' | translate}}\"\n                       type=\"text\">\n            </mat-form-field>\n            <mat-error *ngIf=\"formGroup.get('name').hasError('required')\">\n                {{ 'Name is required' | translate}}\n            </mat-error>\n\n            <mat-form-field class=\"location-input\">\n                <mat-select placeholder=\"{{'Type of report' | translate}}\"\n                            formControlName=\"type\">\n                    <mat-option *ngFor=\"let type of types\"\n                                [value]=\"type\"\n                                (onSelectionChange)=\"updateType($event)\">\n                        {{type | translate}}\n                    </mat-option>\n                </mat-select>\n            </mat-form-field>\n            <mat-error *ngIf=\"formGroup.get('type').hasError('required')\">\n                {{ 'Type is required' | translate}}\n            </mat-error>\n\n            <mat-form-field class=\"location-input\">\n                <input matInput [matDatepicker]=\"picker\"\n                       formControlName=\"since\"\n                       placeholder=\"{{ 'Since when' | translate}}\">\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                <mat-datepicker #picker></mat-datepicker>\n            </mat-form-field>\n\n            <mat-form-field class=\"location-input\">\n                <input formControlName=\"description\"\n                       matInput\n                       placeholder=\"{{ 'Location description' | translate}}\"\n                       type=\"text\">\n            </mat-form-field>\n\n            <div class=\"form-group\" *ngIf=\"user$.isModerator()\">\n                <mat-form-field class=\"location-input\">\n                    <input formControlName=\"slug\"\n                           matInput\n                           placeholder=\"{{ 'Location slug' | translate}}\"\n                           type=\"text\">\n                </mat-form-field>\n                <mat-error *ngIf=\"formGroup.get('slug').hasError('required')\">\n                    {{ 'Slug is required' | translate}}\n                </mat-error>\n\n                <mat-form-field class=\"region-input\">\n                    <input formControlName=\"description\"\n                           matInput\n                           placeholder=\"{{ 'Location description' | translate}}\"\n                           type=\"text\">\n                </mat-form-field>\n            </div>\n        </form>\n\n    </mat-card-content>\n</mat-card>\n<!--\n<mat-card>\n    <h1>Object Editor</h1>\n    <mat-card-content>\n        <json-schema-form [(data)]=\"location\" [schema]=\"schema\" [layout]=\"form\" framework=\"material-design\"></json-schema-form>\n\n        <br>\n        {{schema | json}}\n        <br>\n        {{location | json}}\n        <br>\n        {{form | json}}\n    </mat-card-content>\n</mat-card>\n\n-->\n";
       /***/
     },
 
@@ -273,13 +273,21 @@
       var _residentialreporter_facades_location_facade__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @residentialreporter/facades/location.facade */
       "vssL");
+      /* harmony import */
+
+
+      var _residentialreporter_services_user_user_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! @residentialreporter/services/user/user.service */
+      "CFL1");
 
       var LocationComponent = /*#__PURE__*/function () {
-        function LocationComponent(activatedRoute, locationFacade) {
+        function LocationComponent(activatedRoute, locationFacade, userService) {
           _classCallCheck(this, LocationComponent);
 
           this.activatedRoute = activatedRoute;
           this.locationFacade = locationFacade;
+          this.userService = userService;
+          this.publishLabel = "Publish";
           this.valid = false;
         }
 
@@ -312,13 +320,25 @@
             }));
           }
         }, {
+          key: "updateModerationButton",
+          value: function updateModerationButton() {
+            this.publishLabel = this.updatedLocation.active ? "Withdraw" : "Publish";
+          }
+        }, {
           key: "onLocationChange",
           value: function onLocationChange(payload) {
             this.valid = payload.valid;
 
             if (this.valid) {
               this.updatedLocation = payload.location;
+              this.updateModerationButton();
             }
+          }
+        }, {
+          key: "onPublish",
+          value: function onPublish() {
+            this.updatedLocation.active = !this.updatedLocation.active;
+            this.onSave();
           }
         }, {
           key: "onSave",
@@ -332,6 +352,8 @@
             } else {
               this.locationFacade.update(this.updatedLocation);
             }
+
+            this.updateModerationButton();
           }
         }]);
 
@@ -343,6 +365,8 @@
           type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]
         }, {
           type: _residentialreporter_facades_location_facade__WEBPACK_IMPORTED_MODULE_6__["LocationFacade"]
+        }, {
+          type: _residentialreporter_services_user_user_service__WEBPACK_IMPORTED_MODULE_7__["UserService"]
         }];
       };
 
@@ -659,7 +683,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div class=\"locations\" fxLayout=\"row\" fxLayoutAlign=\"center stretch\">\n    <div fxFlex.lg=\"65%\"\n         fxFlex.md=\"70%\"\n         fxFlex.sm=\"80%\"\n         fxFlex.xl=\"60%\"\n         fxFlex.xs=\"90%\">\n        <h2>{{ 'Location' | translate }}</h2>\n        <app-location-form (locationChange)=\"onLocationChange($event)\"\n                           [location]=\"location | async\"></app-location-form>\n        <div class=\"actions\" fxLayout=\"row\" fxLayoutAlign=\"end center\">\n            <button color=\"secondary\" mat-button routerLink=\"/locations\">{{ 'Cancel' | translate }}</button>\n            <button (click)=\"onSave()\"\n                    [disabled]=\"!valid\"\n                    color=\"primary\"\n                    mat-raised-button>{{ 'Save' | translate}}\n            </button>\n        </div>\n    </div>\n</div>\n";
+      __webpack_exports__["default"] = "<div class=\"locations\" fxLayout=\"row\" fxLayoutAlign=\"center stretch\">\n    <div fxFlex.lg=\"65%\"\n         fxFlex.md=\"70%\"\n         fxFlex.sm=\"80%\"\n         fxFlex.xl=\"60%\"\n         fxFlex.xs=\"90%\">\n        <h2>{{ 'Location' | translate }}</h2>\n        <app-location-form (locationChange)=\"onLocationChange($event)\"\n                           [location]=\"location | async\"></app-location-form>\n        <div class=\"actions\" fxLayout=\"row\" fxLayoutAlign=\"end center\">\n            <button color=\"secondary\" mat-button\n                    (click)=\"onPublish()\"\n                    *ngIf=\"updatedLocation\"\n                    [hidden]=\"!userService.isModerator()\">\n                <span>{{ publishLabel }}</span>\n            </button>\n            <button color=\"secondary\" mat-button routerLink=\"/locations\">{{ 'Cancel' | translate }}</button>\n            <button (click)=\"onSave()\"\n                    [disabled]=\"!valid\"\n                    color=\"primary\"\n                    mat-raised-button>{{ 'Save' | translate}}\n            </button>\n        </div>\n    </div>\n</div>\n";
       /***/
     },
 

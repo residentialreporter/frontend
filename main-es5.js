@@ -616,6 +616,7 @@
           this._snackBar = _snackBar;
           this.isAuthenticated = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
           this.isOffline = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
+          this.isActivated = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
           this.authenticated = false;
           this.roles = [];
           console.log('[USER] Constructing');
@@ -753,6 +754,58 @@
             }));
           }
         }, {
+          key: "changePassword",
+          value: function changePassword(password) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      try {
+                        this.socket.sendMessage({
+                          'component': 'isomer.enrol.manager',
+                          'action': 'changepassword',
+                          'data': password
+                        });
+                      } catch (err) {
+                        console.error(err);
+                      }
+
+                    case 1:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+          }
+        }, {
+          key: "activate",
+          value: function activate(uuid) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      try {
+                        this.socket.sendMessage({
+                          'component': 'isomer.enrol.manager',
+                          'action': 'activate',
+                          'data': uuid
+                        });
+                      } catch (err) {
+                        console.error(err);
+                      }
+
+                    case 1:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
+            }));
+          }
+        }, {
           key: "isUser",
           value: function isUser() {
             return this.roles.indexOf('user') !== -1;
@@ -768,8 +821,8 @@
             return this.roles.indexOf('admin') !== -1;
           }
         }, {
-          key: "reset_password",
-          value: function reset_password(address) {
+          key: "resetPassword",
+          value: function resetPassword(address) {
             this._snackBar.open('Baustelle - dieser Vorgang wird noch entwickelt..', '', {
               duration: 5000,
               horizontalPosition: 'start',
@@ -1553,23 +1606,23 @@
         }, {
           key: "ngOnInit",
           value: function ngOnInit() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
                 while (1) {
-                  switch (_context4.prev = _context4.next) {
+                  switch (_context6.prev = _context6.next) {
                     case 0:
-                      _context4.next = 2;
+                      _context6.next = 2;
                       return this.userService.checkAuthenticated();
 
                     case 2:
-                      this.isAuthenticated = _context4.sent;
+                      this.isAuthenticated = _context6.sent;
 
                     case 3:
                     case "end":
-                      return _context4.stop();
+                      return _context6.stop();
                   }
                 }
-              }, _callee4, this);
+              }, _callee6, this);
             }));
           }
         }, {
@@ -1906,7 +1959,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-app>\n    <mat-toolbar color=\"primary\">\n        <mat-toolbar-row>\n            <span fxShow.gt-sm=\"true\" fxShow.lt-md=\"false\">\n                <button mat-button routerLink=\"/\">\n                    <!--<mat-icon>home</mat-icon> -->\n                    <mat-icon>\n                        <img src=\"assets/icon/building_optimized.svg\">\n                    </mat-icon>\n                    {{title}}</button>\n\n                <button mat-button routerLink=\"/locations/map\">{{ 'Map' | translate }}</button>\n                <button mat-button routerLink=\"/regions\">{{ 'Regions' | translate }}</button>\n                <button mat-button routerLink=\"/locations\">{{ 'Reports' | translate }}</button>\n                <!-- <button mat-button routerLink=\"/editor\">Editor</button> -->\n\n                <!-- This fills the remaining space of the current row -->\n                <span class=\"fill-remaining-space\"></span>\n\n\n                <button [matMenuTriggerFor]=\"usermenubar\" [disabled]=\"isOffline\" mat-button>\n                    <mat-icon [hidden]=\"!isAuthenticated || isOffline\">person</mat-icon>\n                    <mat-icon [hidden]=\"isAuthenticated || isOffline\">person_outline</mat-icon>\n                    <mat-icon [hidden]=\"!isOffline\" matTooltip=\"Cannot contact server!\">person_off</mat-icon>\n                </button>\n                <mat-menu #usermenubar=\"matMenu\">\n                    <button [hidden]=\"isAuthenticated\" mat-button routerLink=\"/register\">\n                        <mat-icon>person_add</mat-icon>\n                        {{ 'Register' | translate }}\n                    </button>\n                    <button [hidden]=\"isAuthenticated\" mat-button routerLink=\"/login\">\n                        <mat-icon>person</mat-icon>\n                        {{ 'Log in' | translate }}\n                    </button>\n                    <button (click)=\"logout()\" [hidden]=\"!isAuthenticated\" mat-button>\n                        <mat-icon>person_outline</mat-icon>\n                        {{ 'Log out' | translate }}\n                    </button>\n                    <button [hidden]=\"!isAuthenticated\" mat-button routerLink=\"/profile\">\n                        <mat-icon>account_box</mat-icon>\n                        {{ 'Edit profile' | translate }}\n                    </button>\n                </mat-menu>\n            </span>\n\n            <button [mat-menu-trigger-for]=\"menu\"\n                    fxHide=\"false\"\n                    fxHide.gt-sm\n                    mat-button>\n                <mat-icon>menu</mat-icon>\n            </button>\n        </mat-toolbar-row>\n\n\n    </mat-toolbar>\n    <mat-menu #menu=\"\" x-position=\"before\">\n        <button mat-menu-item routerLink=\"/\">\n            <mat-icon>home</mat-icon>\n            {{title}}</button>\n        <button mat-menu-item routerLink=\"/map\">\n            <mat-icon>map</mat-icon>\n            {{ 'Map' | translate }}\n        </button>\n        <button mat-menu-item routerLink=\"/regions\">\n            <mat-icon>terrain</mat-icon>\n            {{ 'Regions' | translate }}\n        </button>\n        <button mat-menu-item routerLink=\"/locations\">\n            <mat-icon>feedback</mat-icon>\n            {{ 'Reports' | translate }}\n        </button>\n        <!--<button mat-menu-item>Help</button>-->\n        <button [matMenuTriggerFor]=\"usermenu\" [hidden]=\"isOffline\" mat-menu-item>\n            <mat-icon [hidden]=\"isAuthenticated\">person_outline</mat-icon>\n            <mat-icon [hidden]=\"!isAuthenticated\">person</mat-icon>\n            {{ 'User actions' | translate }}\n        </button>\n        <button [hidden]=\"!isOffline\" mat-menu-item [disabled]=\"true\">\n            <mat-icon>person_off</mat-icon>\n            {{ 'No connection!' | translate }}\n        </button>\n        <mat-menu [hidden]=\"isOffline\" #usermenu=\"matMenu\">\n            <button [hidden]=\"isAuthenticated\" mat-button routerLink=\"/register\">\n                <mat-icon>person_add</mat-icon>\n                {{ 'Register' | translate }}\n            </button>\n            <button [hidden]=\"isAuthenticated\" mat-button routerLink=\"/login\">\n                <mat-icon>person</mat-icon>\n                {{ 'Log in' | translate }}\n            </button>\n            <button (click)=\"logout()\" [hidden]=\"!isAuthenticated\" mat-button>\n                <mat-icon>person_outline</mat-icon>\n                {{ 'Log out' | translate }}\n            </button>\n            <button [hidden]=\"!isAuthenticated\" mat-button routerLink=\"/profile\">\n                <mat-icon>account_box</mat-icon>\n                {{ 'Edit profile' | translate }}\n            </button>\n        </mat-menu>\n    </mat-menu>\n\n\n    <ion-router-outlet></ion-router-outlet>\n</ion-app>\n";
+      __webpack_exports__["default"] = "<ion-app>\n    <mat-toolbar color=\"primary\">\n        <mat-toolbar-row>\n            <span fxShow.gt-sm=\"true\" fxShow.lt-md=\"false\">\n                <button mat-button routerLink=\"/\">\n                    <!--<mat-icon>home</mat-icon> -->\n                    <mat-icon>\n                        <img src=\"assets/icon/building_optimized.svg\">\n                    </mat-icon>\n                    {{title}}</button>\n\n                <button mat-button routerLink=\"/locations/map\">{{ 'Map' | translate }}</button>\n                <button mat-button routerLink=\"/regions\">{{ 'Regions' | translate }}</button>\n                <button mat-button routerLink=\"/locations\">{{ 'Reports' | translate }}</button>\n                <!-- <button mat-button routerLink=\"/editor\">Editor</button> -->\n\n                <!-- This fills the remaining space of the current row -->\n                <span class=\"fill-remaining-space\"></span>\n\n\n                <button [matMenuTriggerFor]=\"usermenubar\" [disabled]=\"isOffline\" mat-button>\n                    <mat-icon [hidden]=\"!isAuthenticated || isOffline\">person</mat-icon>\n                    <mat-icon [hidden]=\"isAuthenticated || isOffline\">person_outline</mat-icon>\n                    <mat-icon [hidden]=\"!isOffline\" matTooltip=\"Cannot contact server!\">person_off</mat-icon>\n                </button>\n                <mat-menu #usermenubar=\"matMenu\">\n                    <button [hidden]=\"isAuthenticated\" mat-button routerLink=\"/register\">\n                        <mat-icon>person_add</mat-icon>\n                        {{ 'Register' | translate }}\n                    </button>\n                    <button [hidden]=\"isAuthenticated\" mat-button routerLink=\"/login\">\n                        <mat-icon>person</mat-icon>\n                        {{ 'Log in' | translate }}\n                    </button>\n                    <button (click)=\"logout()\" [hidden]=\"!isAuthenticated\" mat-button>\n                        <mat-icon>person_outline</mat-icon>\n                        {{ 'Log out' | translate }}\n                    </button>\n                    <button [hidden]=\"!isAuthenticated\" mat-button routerLink=\"/profile\">\n                        <mat-icon>account_box</mat-icon>\n                        {{ 'Edit profile' | translate }}\n                    </button>\n                    <button [hidden]=\"!isAuthenticated\" mat-button routerLink=\"/password-change\">\n                        <mat-icon>vpn_key</mat-icon>\n                        {{ 'Change Password' | translate }}\n                    </button>\n                </mat-menu>\n            </span>\n\n            <button [mat-menu-trigger-for]=\"menu\"\n                    fxHide=\"false\"\n                    fxHide.gt-sm\n                    mat-button>\n                <mat-icon>menu</mat-icon>\n            </button>\n        </mat-toolbar-row>\n\n\n    </mat-toolbar>\n    <mat-menu #menu=\"\" x-position=\"before\">\n        <button mat-menu-item routerLink=\"/\">\n            <mat-icon>home</mat-icon>\n            {{title}}</button>\n        <button mat-menu-item routerLink=\"/map\">\n            <mat-icon>map</mat-icon>\n            {{ 'Map' | translate }}\n        </button>\n        <button mat-menu-item routerLink=\"/regions\">\n            <mat-icon>terrain</mat-icon>\n            {{ 'Regions' | translate }}\n        </button>\n        <button mat-menu-item routerLink=\"/locations\">\n            <mat-icon>feedback</mat-icon>\n            {{ 'Reports' | translate }}\n        </button>\n        <!--<button mat-menu-item>Help</button>-->\n        <button [matMenuTriggerFor]=\"usermenu\" [hidden]=\"isOffline\" mat-menu-item>\n            <mat-icon [hidden]=\"isAuthenticated\">person_outline</mat-icon>\n            <mat-icon [hidden]=\"!isAuthenticated\">person</mat-icon>\n            {{ 'User actions' | translate }}\n        </button>\n        <button [hidden]=\"!isOffline\" mat-menu-item [disabled]=\"true\">\n            <mat-icon>person_off</mat-icon>\n            {{ 'No connection!' | translate }}\n        </button>\n        <mat-menu [hidden]=\"isOffline\" #usermenu=\"matMenu\">\n            <button [hidden]=\"isAuthenticated\" mat-button routerLink=\"/register\">\n                <mat-icon>person_add</mat-icon>\n                {{ 'Register' | translate }}\n            </button>\n            <button [hidden]=\"isAuthenticated\" mat-button routerLink=\"/login\">\n                <mat-icon>person</mat-icon>\n                {{ 'Log in' | translate }}\n            </button>\n            <button (click)=\"logout()\" [hidden]=\"!isAuthenticated\" mat-button>\n                <mat-icon>person_outline</mat-icon>\n                {{ 'Log out' | translate }}\n            </button>\n            <button [hidden]=\"!isAuthenticated\" mat-button routerLink=\"/profile\">\n                <mat-icon>account_box</mat-icon>\n                {{ 'Edit profile' | translate }}\n            </button>\n            <button [hidden]=\"!isAuthenticated\" mat-button routerLink=\"/password-change\">\n                <mat-icon>vpn_key</mat-icon>\n                {{ 'Change Password' | translate }}\n            </button>\n\n        </mat-menu>\n    </mat-menu>\n\n\n    <ion-router-outlet></ion-router-outlet>\n</ion-app>\n";
       /***/
     },
 
@@ -3209,6 +3262,17 @@
           });
         }
       }, {
+        path: 'activation',
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | residentialreporter-pages-activation-activation-module */
+          "residentialreporter-pages-activation-activation-module").then(__webpack_require__.bind(null,
+          /*! @residentialreporter/pages/activation/activation.module */
+          "gXHn")).then(function (m) {
+            return m.ActivationPageModule;
+          });
+        }
+      }, {
         path: 'password-reset',
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
@@ -3217,6 +3281,17 @@
           /*! @residentialreporter/pages/password-reset/password-reset.module */
           "H5x3")).then(function (m) {
             return m.PasswordResetPageModule;
+          });
+        }
+      }, {
+        path: 'password-change',
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | residentialreporter-pages-password-change-password-change-module */
+          "residentialreporter-pages-password-change-password-change-module").then(__webpack_require__.bind(null,
+          /*! @residentialreporter/pages/password-change/password-change.module */
+          "iTKs")).then(function (m) {
+            return m.PasswordChangePageModule;
           });
         }
       }, // Development and debugging

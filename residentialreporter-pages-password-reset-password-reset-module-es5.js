@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<mat-card>\n    <mat-card-content>\n        <form (ngSubmit)=\"onSubmit()\" [formGroup]=\"resetForm\">\n            <h2>{{ 'Reset password' | translate }}</h2>\n\n            <mat-form-field class=\"full-width-input\">\n                <input formControlName=\"address\"\n                       matInput\n                       placeholder=\"{{ 'Email address' | translate }}\"\n                       required>\n                <mat-error>\n                    {{ 'Please provide a valid email address' | translate }}\n                </mat-error>\n            </mat-form-field>\n            <button color=\"primary\" mat-raised-button>{{ 'Send password reset link' | translate }}</button>\n        </form>\n    </mat-card-content>\n</mat-card>\n";
+      __webpack_exports__["default"] = "";
       /***/
     },
 
@@ -196,6 +196,26 @@
     },
 
     /***/
+    "Zj+O":
+    /*!***************************************************************!*\
+      !*** ./src/app/pages/password-reset/password-reset-page.scss ***!
+      \***************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function ZjO(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "mat-card {\n  max-width: 400px;\n  margin: 2em auto;\n  text-align: center;\n}\n\nmat-form-field {\n  display: block;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcGFzc3dvcmQtcmVzZXQvcGFzc3dvcmQtcmVzZXQtcGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0FBQ0Y7O0FBRUE7RUFDRSxjQUFBO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wYXNzd29yZC1yZXNldC9wYXNzd29yZC1yZXNldC1wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJtYXQtY2FyZCB7XG4gIG1heC13aWR0aDogNDAwcHg7XG4gIG1hcmdpbjogMmVtIGF1dG87XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxubWF0LWZvcm0tZmllbGQge1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuIl19 */";
+      /***/
+    },
+
+    /***/
     "fRw/":
     /*!***********************************************************************!*\
       !*** ./src/app/components/password-reset/password-reset.component.ts ***!
@@ -312,7 +332,7 @@
                       _context2.prev = 2;
                       address = this.resetForm.get('address').value;
                       _context2.next = 6;
-                      return this.userService.reset_password(address);
+                      return this.userService.resetPassword(address);
 
                     case 6:
                       _context2.next = 11;
@@ -379,7 +399,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<app-password-reset></app-password-reset>\n";
+      __webpack_exports__["default"] = "<mat-card>\n    <mat-card-content>\n        <form (ngSubmit)=\"onSubmit()\" [formGroup]=\"resetForm\">\n            <h2>{{ 'Reset password' | translate }}</h2>\n\n            <mat-form-field class=\"full-width-input\">\n                <input formControlName=\"address\"\n                       matInput\n                       placeholder=\"{{ 'Email address' | translate }}\"\n                       required>\n                <mat-error>\n                    {{ 'Please provide a valid email address' | translate }}\n                </mat-error>\n            </mat-form-field>\n            <button color=\"primary\" mat-raised-button>{{ 'Send password reset link' | translate }}</button>\n        </form>\n    </mat-card-content>\n</mat-card>\n";
       /***/
     },
 
@@ -437,30 +457,136 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _password_reset_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./password-reset-page.scss */
+      "Zj+O");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/core */
       "fXoL");
+      /* harmony import */
+
+
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/forms */
+      "3Pt+");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @angular/router */
+      "tyNb");
+      /* harmony import */
+
+
+      var _residentialreporter_services_user_user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @residentialreporter/services/user/user.service */
+      "CFL1");
 
       var PasswordResetPageComponent = /*#__PURE__*/function () {
-        function PasswordResetPageComponent() {
+        function PasswordResetPageComponent(fb, route, router, userService) {
           _classCallCheck(this, PasswordResetPageComponent);
+
+          this.fb = fb;
+          this.route = route;
+          this.router = router;
+          this.userService = userService;
+          this.resetForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+            address: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]()
+          });
         }
 
         _createClass(PasswordResetPageComponent, [{
           key: "ngOnInit",
-          value: function ngOnInit() {}
+          value: function ngOnInit() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/home';
+                      this.resetForm = this.fb.group({
+                        address: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]
+                      }); // if (await this.userService.checkAuthenticated()) {
+                      //    await this.router.navigate([this.returnUrl]);
+                      // }
+
+                    case 2:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+          }
+        }, {
+          key: "onSubmit",
+          value: function onSubmit() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              var address;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      this.formSubmitAttempt = false;
+
+                      if (!this.resetForm.valid) {
+                        _context4.next = 13;
+                        break;
+                      }
+
+                      _context4.prev = 2;
+                      address = this.resetForm.get('address').value;
+                      _context4.next = 6;
+                      return this.userService.resetPassword(address);
+
+                    case 6:
+                      _context4.next = 11;
+                      break;
+
+                    case 8:
+                      _context4.prev = 8;
+                      _context4.t0 = _context4["catch"](2);
+                      this.addressInvalid = true;
+
+                    case 11:
+                      _context4.next = 14;
+                      break;
+
+                    case 13:
+                      this.formSubmitAttempt = true;
+
+                    case 14:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this, [[2, 8]]);
+            }));
+          }
         }]);
 
         return PasswordResetPageComponent;
       }();
 
       PasswordResetPageComponent.ctorParameters = function () {
-        return [];
+        return [{
+          type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
+        }, {
+          type: _residentialreporter_services_user_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"]
+        }];
       };
 
-      PasswordResetPageComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+      PasswordResetPageComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: 'app-password-reset-page',
-        template: _raw_loader_password_reset_page_component_html__WEBPACK_IMPORTED_MODULE_1__["default"]
+        template: _raw_loader_password_reset_page_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_password_reset_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
       })], PasswordResetPageComponent);
       /***/
     }
