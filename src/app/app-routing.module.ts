@@ -22,8 +22,16 @@ const routes: Routes = [
         loadChildren: () => import('@residentialreporter/pages/registration/registration.module').then(m => m.RegistrationPageModule),
     },
     {
+        path: 'activation',
+        loadChildren: () => import('@residentialreporter/pages/activation/activation.module').then(m => m.ActivationPageModule),
+    },
+    {
         path: 'password-reset',
         loadChildren: () => import('@residentialreporter/pages/password-reset/password-reset.module').then(m => m.PasswordResetPageModule),
+    },
+    {
+        path: 'password-change',
+        loadChildren: () => import('@residentialreporter/pages/password-change/password-change.module').then(m => m.PasswordChangePageModule),
     },
     // Development and debugging
     {

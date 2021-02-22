@@ -40,6 +40,10 @@
                         <mat-icon>account_box</mat-icon>
                         {{ 'Edit profile' | translate }}
                     </button>
+                    <button [hidden]="!isAuthenticated" mat-button routerLink="/password-change">
+                        <mat-icon>vpn_key</mat-icon>
+                        {{ 'Change Password' | translate }}
+                    </button>
                 </mat-menu>
             </span>
 
@@ -96,6 +100,11 @@
                 <mat-icon>account_box</mat-icon>
                 {{ 'Edit profile' | translate }}
             </button>
+            <button [hidden]="!isAuthenticated" mat-button routerLink="/password-change">
+                <mat-icon>vpn_key</mat-icon>
+                {{ 'Change Password' | translate }}
+            </button>
+
         </mat-menu>
     </mat-menu>
 

@@ -12,6 +12,8 @@ import { SocketClientState } from '@residentialreporter/services/socket-client/s
 export class UserService {
     public isAuthenticated = new BehaviorSubject<boolean>(false);
     public isOffline = new BehaviorSubject<boolean>(false);
+    public isActivated = new BehaviorSubject<boolean>(false);
+
     private socket: SocketClientService;
     private authenticated = false;
     roles: String[] = [];
@@ -105,6 +107,30 @@ export class UserService {
         }
     }
 
+    async changePassword(password) {
+        try {
+            this.socket.sendMessage({
+                'component': 'isomer.enrol.manager',
+                'action': 'changepassword',
+                'data': password
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async activate(uuid) {
+        try {
+            this.socket.sendMessage({
+                'component': 'isomer.enrol.manager',
+                'action': 'activate',
+                'data': uuid
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     isUser() {
         return this.roles.indexOf('user') !== -1;
     }
@@ -118,7 +144,7 @@ export class UserService {
     }
 
 
-    reset_password(address: string) {
+    resetPassword(address: string) {
         this._snackBar.open('Baustelle - dieser Vorgang wird noch entwickelt..', '',{
             duration: 5000,
             horizontalPosition: 'start',

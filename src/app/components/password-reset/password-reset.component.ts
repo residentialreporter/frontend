@@ -42,7 +42,7 @@ export class PasswordResetComponent implements OnInit {
         if (this.resetForm.valid) {
             try {
                 const address = this.resetForm.get('address').value;
-                await this.userService.reset_password(address);
+                await this.userService.resetPassword(address);
             } catch (err) {
                 this.addressInvalid = true;
             }

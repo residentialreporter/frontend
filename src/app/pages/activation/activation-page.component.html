@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-content>
+        <h2>{{ 'Account activation' | translate }}</h2>
+
+        <div [hidden]="userService.isActivated">
+            {{ 'Your account is now activated and you can' | translate }}
+            <a routerLink="/login">{{ 'log in now.' | translate}}</a>
+        </div>
+
+
+        <div [hidden]="!userService.isActivated">
+            {{ 'Please wait while we activate your account.' | translate }}
+        </div>
+    </mat-card-content>
+</mat-card>
