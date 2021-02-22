@@ -8,6 +8,12 @@
         <app-location-form (locationChange)="onLocationChange($event)"
                            [location]="location | async"></app-location-form>
         <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+            <button color="secondary" mat-button
+                    (click)="onPublish()"
+                    *ngIf="updatedLocation"
+                    [hidden]="!userService.isModerator()">
+                <span>{{ publishLabel }}</span>
+            </button>
             <button color="secondary" mat-button routerLink="/locations">{{ 'Cancel' | translate }}</button>
             <button (click)="onSave()"
                     [disabled]="!valid"

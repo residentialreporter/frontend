@@ -6,6 +6,7 @@ import { filter, first, map, switchMap, tap } from 'rxjs/operators';
 import { LocationFacade } from '@residentialreporter/facades/location.facade';
 import { Location } from '@residentialreporter/models/location';
 import { TranslateService } from '@ngx-translate/core';
+import { UserService } from '@residentialreporter/services/user/user.service';
 
 @Component({
     selector: 'app-location',
@@ -14,12 +15,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LocationComponent implements OnInit {
     private translate: TranslateService;
-    private updatedLocation: Location;
+    public updatedLocation: Location;
     location: Observable<Location>;
+    publishLabel = "Publish";
     valid = false;
 
 
-    constructor(private activatedRoute: ActivatedRoute, private locationFacade: LocationFacade) {
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private locationFacade: LocationFacade,
+        public userService: UserService) {
     }
 
     ngOnInit() {
@@ -44,11 +49,21 @@ export class LocationComponent implements OnInit {
         return this.locationFacade.ids$.pipe(map((ids: number[]) => ids.indexOf(id) > -1));
     }
 
+    updateModerationButton() {
+        this.publishLabel = this.updatedLocation.active ? "Withdraw" : "Publish";
+    }
+
     onLocationChange(payload: { location: Location; valid: boolean }) {
         this.valid = payload.valid;
         if (this.valid) {
             this.updatedLocation = payload.location;
+            this.updateModerationButton();
         }
+    }
+
+    onPublish() {
+        this.updatedLocation.active = !this.updatedLocation.active;
+        this.onSave();
     }
 
     onSave() {
@@ -61,5 +76,7 @@ export class LocationComponent implements OnInit {
         } else {
             this.locationFacade.update(this.updatedLocation);
         }
+
+        this.updateModerationButton();
     }
 }
