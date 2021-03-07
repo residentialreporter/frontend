@@ -29,6 +29,7 @@ import { AnyInPipe } from './any-in.pipe';
         CommonModule,
         LeafletModule,
         LeafletMarkerClusterModule,
+        TranslateModule,
         MaterialModule,
     ]
 })
