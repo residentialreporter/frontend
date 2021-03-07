@@ -72,7 +72,8 @@ export class LeafletMapLocationsComponent implements OnInit, OnChanges {
             });
 
             if (typeof item.coordinate !== 'undefined') {
-                data.push(L.marker([item.coordinate.lat, item.coordinate.lon], {icon}));
+                const marker = new this.extendedMarker().on('click', this.displayLocation)
+                data.push(marker);
             } else {
                 console.log('[MAP-PLACES] Place without coordinates. Both frontend and backend should have prevented this...', item);
             }
