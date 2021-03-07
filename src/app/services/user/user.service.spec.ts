@@ -4,6 +4,7 @@ import { UserService } from './user.service';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserService', () => {
     let service: UserService;
@@ -11,7 +12,11 @@ describe('UserService', () => {
     beforeEach(() => {
 
         TestBed.configureTestingModule({
-            imports: [RouterTestingModule, MatSnackBarModule],
+            imports: [
+                RouterTestingModule,
+                MatSnackBarModule,
+                NoopAnimationsModule
+            ],
             providers: [
             ]
         });

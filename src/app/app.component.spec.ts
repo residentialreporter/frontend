@@ -10,6 +10,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
 
 describe('AppComponent', () => {
 
@@ -24,7 +25,12 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            imports: [RouterTestingModule, MatSnackBarModule, TranslateModule.forRoot(), NoopAnimationsModule],
+            imports: [
+                RouterTestingModule,
+                MatSnackBarModule,
+                TranslateModule.forRoot(),
+                MatMenuModule,
+                NoopAnimationsModule],
             providers: [
                 {provide: StatusBar, useValue: statusBarSpy},
                 {provide: SplashScreen, useValue: splashScreenSpy},

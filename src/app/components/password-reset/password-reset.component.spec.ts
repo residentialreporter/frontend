@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PasswordResetComponent } from '@residentialreporter/components/password-reset/password-reset.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PasswordResetComponent', () => {
     let component: PasswordResetComponent;
@@ -16,10 +18,12 @@ describe('PasswordResetComponent', () => {
             declarations: [PasswordResetComponent],
             imports: [
                 IonicModule.forRoot(),
+                TranslateModule.forRoot(),
                 FormsModule,
                 ReactiveFormsModule,
                 RouterTestingModule,
-                MatSnackBarModule
+                MatSnackBarModule,
+                NoopAnimationsModule
             ],
             providers: [
                 {

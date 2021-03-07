@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivationPageComponent } from '@residentialreporter/pages/activation/activation-page.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ActivationPageComponent', () => {
     let component: ActivationPageComponent;
@@ -15,8 +17,10 @@ describe('ActivationPageComponent', () => {
             declarations: [ActivationPageComponent],
             imports: [
                 IonicModule.forRoot(),
+                TranslateModule.forRoot(),
                 RouterTestingModule,
-                MatSnackBarModule
+                MatSnackBarModule,
+                NoopAnimationsModule
             ],
             providers: [
                 {

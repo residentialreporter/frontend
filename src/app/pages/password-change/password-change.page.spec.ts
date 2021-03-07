@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PasswordChangePageComponent } from '@residentialreporter/pages/password-change/password-change-page.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PasswordChangePageComponent', () => {
     let component: PasswordChangePageComponent;
@@ -16,10 +18,12 @@ describe('PasswordChangePageComponent', () => {
             declarations: [PasswordChangePageComponent],
             imports: [
                 IonicModule.forRoot(),
+                TranslateModule.forRoot(),
                 FormsModule,
                 ReactiveFormsModule,
                 RouterTestingModule,
-                MatSnackBarModule
+                MatSnackBarModule,
+                NoopAnimationsModule,
             ],
             providers: [
                 {

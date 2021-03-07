@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('LoginComponent', () => {
     let component: LoginComponent;
@@ -16,10 +18,12 @@ describe('LoginComponent', () => {
             declarations: [LoginComponent],
             imports: [
                 IonicModule.forRoot(),
+                TranslateModule.forRoot(),
                 FormsModule,
                 ReactiveFormsModule,
                 RouterTestingModule,
-                MatSnackBarModule
+                MatSnackBarModule,
+                NoopAnimationsModule
             ],
             providers: [
                 {
