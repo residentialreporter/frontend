@@ -94,21 +94,23 @@
           key: "ngOnInit",
           value: function ngOnInit() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var _this = this;
-
               return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                   switch (_context.prev = _context.next) {
                     case 0:
                       this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/home';
-                      this.activatedRoute.params.subscribe(function (params) {
-                        console.log('Activating UUID:', params.uuid);
-                        return _this.userService.activate(params.uuid);
-                      }); // if (await this.userService.checkAuthenticated()) {
+                      /*
+                      this.activatedRoute.params
+                          .subscribe(params => {
+                              console.log('Activating UUID:', params.uuid);
+                              return this.userService.activate(params.uuid);
+                          });
+                                */
+                      // if (await this.userService.checkAuthenticated()) {
                       //    await this.router.navigate([this.returnUrl]);
                       // }
 
-                    case 2:
+                    case 1:
                     case "end":
                       return _context.stop();
                   }

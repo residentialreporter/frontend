@@ -43,11 +43,15 @@ let ActivationPageComponent = class ActivationPageComponent {
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/home';
+            /*
             this.activatedRoute.params
                 .subscribe(params => {
-                console.log('Activating UUID:', params.uuid);
-                return this.userService.activate(params.uuid);
-            });
+                    console.log('Activating UUID:', params.uuid);
+                    return this.userService.activate(params.uuid);
+                });
+    
+    
+            */
             // if (await this.userService.checkAuthenticated()) {
             //    await this.router.navigate([this.returnUrl]);
             // }
